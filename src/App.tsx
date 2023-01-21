@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [ movies, setMovies ] = useState({});
+
+  useEffect( () => {
+    axios.get('http://www.omdbapi.com/?apikey=a316565&i=tt8580274')
+      .then(data => setMovies(data))
+      .catch(err => `There was an error fetching the data. Details: ${err}`)
+
+    console.log(movies)
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
