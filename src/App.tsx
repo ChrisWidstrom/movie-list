@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Movie from './components/Movie'
 import axios from 'axios';
 import './App.css';
 
-function App() {
+const App = () => {
 
   const [ movies, setMovies ] = useState<any[]>([]);
   const apiKey = '2b8c078972f734dba09ea9a3fcdfdf58';
@@ -15,18 +16,20 @@ function App() {
         setMovies(response.data.results)})
       .catch(err => `There was an error fetching the data. Details: ${err}`)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-        console.log(movies[0].original_language);
   }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>The Movie List</h1>
+        <div>
+        { movies.map( (movie) => {
+          return <Movie key={movie.id} title={movie.title} synopsis={movie.overview} releaseDate={movie.release_date}/>
+        })}
+        </div>
+
       </header>
       <main>
-        { movies.map( (movie) => {
-          return <p>{movie.original_title}</p>;
-        })}
+        
       </main>
     </div>
   );
