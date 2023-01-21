@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
 
-  const [ movies, setMovies ] = useState({});
+  const [ movies, setMovies ] = useState<any[]>([]);
+  const apiKey = '2b8c078972f734dba09ea9a3fcdfdf58';
+  const names = ['Chris', 'Newman'];
 
   useEffect( () => {
-    axios.get('http://www.omdbapi.com/?apikey=a316565&i=tt8580274')
-      .then(data => setMovies(data))
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=Jack+Reacher`)
+      .then((response) => {
+        console.log(response.data.results)
+        setMovies(response.data.results)})
       .catch(err => `There was an error fetching the data. Details: ${err}`)
-
-    console.log(movies)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+        console.log(movies[0].original_language);
   }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>The Movie List</h1>
       </header>
+      <main>
+        { movies.map( (movie) => {
+          return <p>{movie.original_title}</p>;
+        })}
+      </main>
     </div>
   );
 }
