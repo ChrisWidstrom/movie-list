@@ -1,0 +1,19 @@
+aside {
+    background: #F8F9FB;
+    font-size: small;
+    color: #888;
+}
+
+main {
+    background: white;
+}
+
+.mainWrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 310px auto;
+}
+
+.movieName {
+    padding: 0rem 1rem 0rem 1rem;
+}
