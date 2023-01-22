@@ -7,7 +7,7 @@ const MovieList = (props:any) => {
         <div>
             <SearchBar setQuery={props.setQuery}/>
             { props.movieList.map( (movie:any)=> {
-                return <Movie key={movie.id} title={movie.original_title}/>
+                return <Movie key={movie.id} title={movie.original_title} id={movie.id} setMovieId={props.setMovieId}/>
             })}
         </div>   
     )
