@@ -2,12 +2,12 @@ import React from "react";
 import Movie from "./Movie";
 import SearchBar from "./SearchBar";
 
-const MovieList = (props:any) => {
+const MovieList = ({ movieList, setQuery, setMovieId } : { movieList:any, setQuery: any, setMovieId: any }) => {
     return ( 
         <div>
-            <SearchBar setQuery={props.setQuery}/>
-            { props.movieList.map( (movie:any)=> {
-                return <Movie key={movie.id} title={movie.original_title} id={movie.id} setMovieId={props.setMovieId}/>
+            <SearchBar setQuery={setQuery}/>
+            { movieList.map( (movie:any)=> {
+                return <Movie key={movie.id} title={movie.original_title} id={movie.id} setMovieId={setMovieId}/>
             })}
         </div>   
     )

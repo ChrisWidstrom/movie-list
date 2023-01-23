@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import axios from "axios";
@@ -7,11 +7,13 @@ import "./App.css";
 
 const App = () => {
 
-  const [movies, setMovies] = useState<any[]>([]);
-  const [query, setQuery] = useState('fire');
-  const [movieId, setMovieId] = useState('139567');
+  let movies = useRef([{}]);
+  const [query, setQuery] = useState('');
+  const [movieId, setMovieId] = useState('1885');
 
   const apiKey = "2b8c078972f734dba09ea9a3fcdfdf58";
+
+  // The input field in the SearchBar component updates the query state. useEffect is then called to fetch a list of movies from the server.
 
   useEffect(() => {
     axios
@@ -19,29 +21,31 @@ const App = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
       )
       .then((response) => {
-        setMovies(response.data.results);
+        movies.current = response.data.results;
       })
       .catch((err) => `There was an error fetching the data. Details: ${err}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, movieId]);
+
+  // The updateQuery function is passed down to SearchBar and is called when the search input text field is updated.
 
   const updateQuery = (query: string) => {
     if (query) {
       setQuery(query);
     } else {
-      setMovies([{ id: 0, original_title: "Please enter a search keyword"}]);
+      movies.current =[{id: 0, original_title: "Please enter a search keyword"}];
     }
   }
 
+  // The updateMovieId function takes an Id and updates the MovieId state. This function is passed down to the MovieList component as a props.
   const updateMovieId = (id:string) => {
     setMovieId(id);
-    console.log(`Movie ID updated to: ${movieId}`)
   }
 
   return (
     <div className="mainWrapper">
       <aside>
-        <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
+        <MovieList movieList={movies.current} setQuery={updateQuery} setMovieId={updateMovieId}/>
       </aside>
 
       <main>
