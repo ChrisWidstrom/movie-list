@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from 'react-router-dom';
 import MyList from "./components/MyList";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
+import Movie from "./ts/types/types";
 import axios from "axios";
 import "./App.css";
 
 
 const App = () => {
 
-  let movies = useRef([{}]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [query, setQuery] = useState('');
   const [movieId, setMovieId] = useState('1885');
+  const [myList, setMyList] = useState<Movie[]>([]);
 
   const apiKey = "2b8c078972f734dba09ea9a3fcdfdf58";
 
@@ -23,11 +25,11 @@ const App = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
       )
       .then((response) => {
-        movies.current = response.data.results;
+        setMovies(response.data.results);
       })
       .catch((err) => `There was an error fetching the data. Details: ${err}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, movieId]);
+  }, [query, movieId, setMovies]);
 
   // The updateQuery function is passed down to SearchBar and is called when the search input text field is updated.
 
@@ -35,7 +37,7 @@ const App = () => {
     if (query) {
       setQuery(query);
     } else {
-      movies.current =[{id: 0, title: "Please enter a search keyword"}];
+      setMovies([{id: 0, title: "Please enter a search keyword", genres: [], runtime: 0, release_date: '', poster_path:''}]);
     }
   }
 
@@ -44,12 +46,16 @@ const App = () => {
     setMovieId(id);
   }
 
+  const addToMyList = (movie: Movie) => {
+    setMyList([...myList, movie]);
+  }
+
   return (
     <div className="container">
-        <MovieList movieList={movies.current} setQuery={updateQuery} setMovieId={updateMovieId}/>
+        <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
         <Routes>
-          <Route path="/" element={<MovieDetails movieId={movieId} />} />
-          <Route path="/my-list" element={<MyList />} />
+          <Route path="/" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
+          <Route path="/my-list" element={<MyList myList={myList} />} />
         </Routes>
     </div>
   );

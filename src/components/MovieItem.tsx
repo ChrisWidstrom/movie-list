@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Movie = ( {title, setMovieId, id} : { title: string, setMovieId: any, id:string }) => {
+const MovieItem = ( {title, setMovieId, id} : { title: String, setMovieId: Function, id: Number }) => {
 
     const updateMovieId = () => {
         setMovieId(id);
@@ -13,4 +13,4 @@ const Movie = ( {title, setMovieId, id} : { title: string, setMovieId: any, id:s
     );
 }
 
-export default Movie;
+export default MovieItem;

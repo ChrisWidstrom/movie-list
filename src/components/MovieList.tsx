@@ -1,9 +1,10 @@
 import React from "react";
-import Movie from "./Movie";
+import Movie from "../ts/types/types";
 import SearchBar from "./SearchBar";
 import { NavLink } from "react-router-dom";
+import MovieItem from "./MovieItem";
 
-const MovieList = ({ movieList, setQuery, setMovieId } : { movieList:any, setQuery: any, setMovieId: any }) => {
+const MovieList = ({ movieList, setQuery, setMovieId } : { movieList: Movie[], setQuery: Function, setMovieId: Function }) => {
     return ( 
         <div className="searchPane">
 
@@ -13,9 +14,10 @@ const MovieList = ({ movieList, setQuery, setMovieId } : { movieList:any, setQue
             </div>
 
             <SearchBar setQuery={setQuery}/>
-            { movieList.map( (movie:any)=> {
-                return <Movie key={movie.id} title={movie.original_title} id={movie.id} setMovieId={setMovieId}/>
+            { movieList.map( (movie: Movie)=> {
+                return <MovieItem title={movie.title} id={movie.id} setMovieId={setMovieId}/>
             })}
+
         </div>   
     )
 }
