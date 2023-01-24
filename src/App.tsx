@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Route, Routes, Navigate } from 'react-router-dom';
+import MyList from "./components/MyList";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import axios from "axios";
@@ -33,7 +35,7 @@ const App = () => {
     if (query) {
       setQuery(query);
     } else {
-      movies.current =[{id: 0, original_title: "Please enter a search keyword"}];
+      movies.current =[{id: 0, title: "Please enter a search keyword"}];
     }
   }
 
@@ -43,14 +45,12 @@ const App = () => {
   }
 
   return (
-    <div className="mainWrapper">
-      <aside>
+    <div className="container">
         <MovieList movieList={movies.current} setQuery={updateQuery} setMovieId={updateMovieId}/>
-      </aside>
-
-      <main>
-        <MovieDetails movieId={movieId}/>
-      </main>
+        <Routes>
+          <Route path="/" element={<MovieDetails movieId={movieId} />} />
+          <Route path="/my-list" element={<MyList />} />
+        </Routes>
     </div>
   );
 };
