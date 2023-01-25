@@ -52,12 +52,18 @@ const App = () => {
     setMyList([...myList, movie]);
   }
 
+  const removeMovieFromMyList = (id: Number) => {
+    setMyList( oldList => {
+      return oldList.filter( movie => movie.id !== id)
+    })
+  }
+
   return (
     <div className="container">
         <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
         <Routes>
           <Route path="database" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
-          <Route path="/" element={<MyList myList={myList} />} />
+          <Route path="/" element={<MyList myList={myList} removeMovieFromMyList={removeMovieFromMyList}/>} />
         </Routes>
     </div>
   );

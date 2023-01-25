@@ -157,4 +157,5 @@
 .removeFromMyListButton {
     background: none;
     border: none;
+    cursor: pointer;
 }
