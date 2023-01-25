@@ -5,7 +5,9 @@ const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Func
     
   const button = useRef<HTMLButtonElement>(null);
 
-  // The movie state is initialized with a movie object to create a default view if the list is empty. This will be solved more elegantly in the future.
+  // The movie state is initialized with a movie object to provide content to the view. 
+  // This will be solved more elegantly in the future.
+
   const [movie, setMovie] = useState({
     title: "The Karate Kid",
     poster_path: "/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg",

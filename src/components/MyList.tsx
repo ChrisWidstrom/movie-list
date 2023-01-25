@@ -3,6 +3,10 @@ import Movie from "../ts/types/types";
 import trashbinImage from '../images/trash.png';
 
 const MyList = ({ myList, removeMovieFromMyList }: { myList: Movie[], removeMovieFromMyList: Function }) => {
+
+  // The movie state is initialized with a movie object to create a default view if the list is empty. 
+  // This will be solved more elegantly in the future.
+    
   const [movie, setMovie] = useState<Movie>({
     id: 120467,
     title: "The Grand Budapest Hotel",
@@ -16,6 +20,15 @@ const MyList = ({ myList, removeMovieFromMyList }: { myList: Movie[], removeMovi
     ],
     overview: "A murder case of Madam D. With enormous wealth and the most outrageous events surrounding her sudden death!"
   });
+
+  /**
+   * removeMovieFromList
+   * This function calls the removeMovieFromMyList function in the App component.
+   * 
+   * @param id - The id from the Movie object.
+   * @returns - Not applicable.
+   *
+   */
 
   const removeMovieFromList = (movieId: Number) => {
     removeMovieFromMyList(movieId);

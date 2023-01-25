@@ -1,14 +1,24 @@
 import React, { useRef } from "react";
 
-const SearchBar = (props: any) => {
+const SearchBar = ({ setQuery } : { setQuery: Function}) => {
 
   const searchField = useRef(document.createElement("input"));
 
+  /**
+   * updateSearchQuery
+   * This function calls the setQuery function in the App component passing it the current value of the Search Field.
+   * 
+   * @param - Not applicable
+   * @returns - Not applicable.
+   *
+   */
+
   const updateSearchQuery = () => {
-    props.setQuery(searchField.current.value);
+    setQuery(searchField.current.value);
   };
 
-  const submitForm = (event: any) => {
+  // Prevents the enter key from submitting the form
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   }
 
