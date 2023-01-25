@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import MyList from "./components/MyList";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";

@@ -9,8 +9,8 @@ const MovieList = ({ movieList, setQuery, setMovieId } : { movieList: Movie[], s
         <div className="searchPane">
 
             <div className="linkGroup">
-                <NavLink to="/database" className={"menu-item"}>Movie Database</NavLink>
-                <NavLink to="/" className={"menu-item"}>My List</NavLink>
+                <NavLink to="/database" className={({ isActive }) => (isActive ? 'menu-item-active' : 'menu-item')}>Movie Database</NavLink>
+                <NavLink to="/" className={({ isActive }) => (isActive ? 'menu-item-active' : 'menu-item')}>My List</NavLink>
             </div>
 
             <SearchBar setQuery={setQuery}/>

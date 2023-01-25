@@ -4,7 +4,8 @@ export type Movie = {
     genres: Genre[],
     runtime: Number,
     release_date: String,
-    poster_path: String,
+    poster_path?: String,
+    backdrop_path?: String,
     overview: String
 }
 

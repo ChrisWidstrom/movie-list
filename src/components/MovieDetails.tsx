@@ -6,12 +6,12 @@ const MovieDetails = ( { movieId, addToList } : { movieId: Number, addToList: Fu
     const button = useRef<HTMLButtonElement>(null);
 
     const [movie, setMovie] = useState(
-        { title: '', 
-        poster_path: '', 
-        release_date: '', 
-        runtime: 0, 
-        genres: [], 
-        overview: ''
+        { title: 'The Karate Kid', 
+        poster_path: '/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg', 
+        release_date: '1984-06-22', 
+        runtime: 126, 
+        genres: [{id: 1, name: 'Action'}, {id: 2, name: 'Family'}, {id: 3, name: 'Drama'} ], 
+        overview: 'Daniel, a fatherless teenager, arrives in Los Angeles and becomes the object of bullying by a gang of karate students when he strikes up a relationship with Ali, the gang leader’s ex-girlfriend, so Daniel asks Miyagi, a master of martial arts, to help him learn karate.'
     });
 
     const updateButtonText = (text: String) => {
