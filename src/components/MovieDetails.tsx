@@ -1,13 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const MovieDetails = ({
-  movieId,
-  addToList,
-}: {
-  movieId: Number;
-  addToList: Function;
-}) => {
+const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Function }) => {
+    
   const button = useRef<HTMLButtonElement>(null);
 
   // The movie state is initialized with a movie object to create a default view if the list is empty. This will be solved more elegantly in the future.
