@@ -1,120 +1,4 @@
-.searchPane {
-    background: #F8F9FB;
-    font-size: small;
-    color: #888;
-}
-
-.container {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 310px auto;
-}
-
-.movieName {
-    padding: 0rem 1rem 0rem 1rem;
-    cursor: pointer;
-}
-
-.searchBar {
-    display: block;
-    margin: 1rem auto 1rem auto;
-    width: 90%;
-    border: none;
-    height: 2rem;
-    border-radius: 5px;
-    padding-left: 0.5rem;
-    text-transform: capitalize;
-}
-
-.movieDetails {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 480px;
-    height: auto;
-}
-
-.poster {
-    margin: 4rem 1rem 1rem 5rem;
-    border-radius: 10px;
-    box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.3);
-    height: 400px;
-}
-
-.movieDetailsColumn2 {
-    display:flex;
-    flex-direction: column;
-    max-width: 600px;
-
-    margin: 4rem 4rem 1rem 3rem;
-}
-
-.addButton {
-    background: rgb(128, 201, 136);
-    color: white;
-    border: none;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display:block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 200px;
-
-    margin-top: auto;
-}
-
-.genre {
-    display: inline-block;
-    background: lightblue;
-    border-radius: 5px;
-    padding: 7px;
-    color: white;
-    margin: 10px 10px 5px 0px;
-    text-transform: uppercase;
-    font-size:smaller;
-}
-
-.movieInfo {
-    display: flex;
-    direction: row;
-}
-
-.movieHeading {
-    margin-bottom: 5px;
-}
-
-.menu-item {
-    text-transform: uppercase;
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.menu-item {
-    text-transform: uppercase;
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.menu-item-active {
-    text-transform: uppercase;
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bolder;
-}
-
-
-.linkGroup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1rem;
-}
+/* My List View */
 
 .myListItem {
     padding: 10px 0;
@@ -157,4 +41,120 @@
     background: none;
     border: none;
     cursor: pointer;
+}
+
+/* Search Pane View */
+
+.linkGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.menu-item {
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.menu-item-active {
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bolder;
+}
+
+.searchPane {
+    background: #F8F9FB;
+    font-size: small;
+    color: #888;
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 310px auto;
+}
+
+.movieName {
+    padding: 0rem 1rem 0rem 1rem;
+    cursor: pointer;
+}
+
+.searchBar {
+    display: block;
+    margin: 1rem auto 1rem auto;
+    width: 90%;
+    border: none;
+    height: 2rem;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    text-transform: capitalize;
+}
+
+/* Movie details view */
+
+.addButton {
+    background: rgb(128, 201, 136);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display:block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+
+    margin-top: auto;
+}
+
+.poster {
+    margin: 4rem 1rem 1rem 5rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.3);
+    height: 400px;
+}
+
+/* My list and Movie details view */
+
+.movieDetails {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 480px;
+    height: auto;
+}
+
+.movieDetailsColumn2 {
+    display:flex;
+    flex-direction: column;
+    max-width: 600px;
+
+    margin: 4rem 4rem 1rem 3rem;
+}
+
+.genre {
+    display: inline-block;
+    background: lightblue;
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    margin: 10px 10px 5px 0px;
+    text-transform: uppercase;
+    font-size:smaller;
+}
+
+.movieInfo {
+    display: flex;
+    direction: row;
+}
+
+.movieHeading {
+    margin-bottom: 5px;
 }
