@@ -18,7 +18,15 @@ const App = () => {
   const navigate = useNavigate();
   const apiKey = "2b8c078972f734dba09ea9a3fcdfdf58";
 
-  // The input field in the SearchBar component updates the query state. useEffect is then called to fetch a list of movies from the server.
+  /**
+   * useEffect
+   * Fetches a list of movies from the API using a search query.
+   *
+   * @param query - They keyword passed in from the search text field.
+   * @param apiKey - The API key for Themoviedb.org
+   * @returns - Not applicable.
+   *
+   */
 
   useEffect(() => {
     axios
@@ -32,7 +40,15 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, movieId, setMovies]);
 
-  // The updateQuery function is passed down to SearchBar and is called when the search input text field is updated.
+  /**
+   * updateQuery
+   * If the search text field is empty a Movie object is passed to the movie list with the title "Please enter a search keyword". 
+   * (This will be solved in a more elgant way.)
+   *
+   * @param query - The text that is currently in the search text field.
+   * @returns - Not applicable.
+   *
+   */
 
   const updateQuery = (query: string) => {
     if (query) {
@@ -42,15 +58,41 @@ const App = () => {
     }
   }
 
-  // The updateMovieId function takes an Id and updates the MovieId state. This function is passed down to the MovieList component as a props.
+  /**
+   * updateMovieId
+   * When a movie is clicked in the search results this function updates the movieId state,
+   *
+   * @param id - The id of the movie object.
+   * @returns - Not applicable.
+   *
+   */
+
   const updateMovieId = (id: Number) => {
     navigate('/database');
     setMovieId(id);
   }
 
+  /**
+   * addToMyList
+   * When the 'Add to list' button is clicked in the Movie Details view this function is called and adds the selected movie to the myList array
+   *
+   * @param movie - The movie object.
+   * @returns - Not applicable.
+   *
+   */
+
   const addToMyList = (movie: Movie) => {
     setMyList([...myList, movie]);
   }
+
+  /**
+   * addToMyList
+   * When the remove button is clicked in the Movie Details view this function is called and removes the selected movie to the myList array
+   *
+   * @param id - The id of the movie object.
+   * @returns - Not applicable.
+   *
+   */
 
   const removeMovieFromMyList = (id: Number) => {
     setMyList( oldList => {
