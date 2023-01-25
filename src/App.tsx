@@ -9,7 +9,7 @@ import "./App.css";
 
 
 const App = () => {
-
+  
   const [movies, setMovies] = useState<Movie[]>([]);
   const [query, setQuery] = useState('');
   const [movieId, setMovieId] = useState<Number>(0);
