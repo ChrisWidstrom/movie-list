@@ -17,7 +17,7 @@ const SearchBar = (props: any) => {
       <input
         ref={searchField}
         type="text"
-        placeholder=" Search movie title"
+        placeholder=" Search movie database"
         className="searchBar"
         onChange={updateSearchQuery}
       ></input>

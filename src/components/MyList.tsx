@@ -4,19 +4,17 @@ import trashbinImage from '../images/trash.png';
 
 const MyList = ({ myList, removeMovieFromMyList }: { myList: Movie[], removeMovieFromMyList: Function }) => {
   const [movie, setMovie] = useState<Movie>({
-    id: 12345,
-    title: "The Karate Kid",
-    poster_path: "/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg",
-    backdrop_path: "/4TRL9t8yOQ74j7jI4dGy7C9OVvC.jpg",
-    release_date: "1984-06-22",
-    runtime: 126,
+    id: 120467,
+    title: "The Grand Budapest Hotel",
+    poster_path: "/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+    backdrop_path: "/xHDynIimfsgj0ZOs0j5ma8v1vmM.jpg",
+    release_date: "2014-02-26",
+    runtime: 100,
     genres: [
-      { id: 1, name: "Action" },
-      { id: 2, name: "Family" },
-      { id: 3, name: "Drama" },
+      { id: 1, name: "Comedy" },
+      { id: 2, name: "Drama" },
     ],
-    overview:
-      "Daniel, a fatherless teenager, arrives in Los Angeles and becomes the object of bullying by a gang of karate students when he strikes up a relationship with Ali, the gang leader’s ex-girlfriend, so Daniel asks Miyagi, a master of martial arts, to help him learn karate.",
+    overview: "A murder case of Madam D. With enormous wealth and the most outrageous events surrounding her sudden death!"
   });
 
   const removeMovieFromList = (movieId: Number) => {
