@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const MovieDetails = ( { movieId, addToList } : { movieId:string, addToList: Function} ) => {
+const MovieDetails = ( { movieId, addToList } : { movieId: Number, addToList: Function} ) => {
 
     const button = useRef<HTMLButtonElement>(null);
 

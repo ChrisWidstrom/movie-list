@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import MyList from "./components/MyList";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
@@ -12,9 +12,10 @@ const App = () => {
 
   const [movies, setMovies] = useState<Movie[]>([]);
   const [query, setQuery] = useState('');
-  const [movieId, setMovieId] = useState('1885');
+  const [movieId, setMovieId] = useState<Number>(0);
   const [myList, setMyList] = useState<Movie[]>([]);
 
+  const navigate = useNavigate();
   const apiKey = "2b8c078972f734dba09ea9a3fcdfdf58";
 
   // The input field in the SearchBar component updates the query state. useEffect is then called to fetch a list of movies from the server.
@@ -37,12 +38,13 @@ const App = () => {
     if (query) {
       setQuery(query);
     } else {
-      setMovies([{id: 0, title: "Please enter a search keyword", genres: [], runtime: 0, release_date: '', poster_path:''}]);
+      setMovies([{id: 0, title: "Please enter a search keyword", genres: [], runtime: 0, release_date: '', poster_path:'', overview: ''}]);
     }
   }
 
   // The updateMovieId function takes an Id and updates the MovieId state. This function is passed down to the MovieList component as a props.
-  const updateMovieId = (id:string) => {
+  const updateMovieId = (id: Number) => {
+    navigate('/database');
     setMovieId(id);
   }
 
@@ -54,8 +56,8 @@ const App = () => {
     <div className="container">
         <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
         <Routes>
-          <Route path="/" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
-          <Route path="/my-list" element={<MyList myList={myList} />} />
+          <Route path="database" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
+          <Route path="/" element={<MyList myList={myList} />} />
         </Routes>
     </div>
   );
