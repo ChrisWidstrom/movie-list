@@ -1,3 +1,5 @@
+/* Header */
+
 /* My List View */
 
 
@@ -14,7 +16,7 @@
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    width: 710px;
+    width: 100%;
 }
 
 .myList {
@@ -148,7 +150,7 @@
 
 .movieDetails {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns:680px auto;
     grid-template-rows: 390px;
 }
 
@@ -161,6 +163,26 @@
     display:flex;
     flex-direction: column;
     max-width: 600px;
+    min-width: 400px;
+    margin: 2rem 4rem 1rem 3rem;
+}
+
+.movieDetails-search {
+    display: grid;
+    grid-template-columns:280px auto;
+    grid-template-rows: 390px;
+}
+
+.movieDetailsColumn1-search {
+    padding-left: 3rem;
+    padding-top: 2rem;
+}
+
+.movieDetailsColumn2-search {
+    display:flex;
+    flex-direction: column;
+    max-width: 600px;
+    min-width: 400px;
     margin: 2rem 4rem 1rem 3rem;
 }
 

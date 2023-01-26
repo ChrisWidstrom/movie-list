@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
+
 const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Function }) => {
     
   const button = useRef<HTMLButtonElement>(null);
@@ -76,16 +77,16 @@ const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Func
   };
 
   return (
-    <div className="movieDetails">
-      <div className="movieDetailsColumn1">
+    <div className="movieDetails-search">
+      <div className="movieDetailsColumn1-search">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          src={ movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "./img/poster-na.jpg"}
           alt="movie poster"
           className="poster"
         />
       </div>
 
-      <div className="movieDetailsColumn2">
+      <div className="movieDetailsColumn2-search">
         <h1 className="movieHeading">{movie.title}</h1>
         <div className="movieInfo">
           <span>

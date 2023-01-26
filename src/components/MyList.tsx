@@ -46,7 +46,7 @@ const MyList = ({
         <div className="movieDetailsColumn1">
           
           <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+            src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : './img/poster-na.jpg'}
             alt="movie poster"
             className="poster"
           />
