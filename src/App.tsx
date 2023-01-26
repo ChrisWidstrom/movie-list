@@ -3,13 +3,14 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import MyList from "./components/MyList";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
+import Header from "./components/Header"
 import Movie from "./ts/types/types";
 import axios from "axios";
 import "./App.css";
 
 
 const App = () => {
-  
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [query, setQuery] = useState('');
   const [movieId, setMovieId] = useState<Number>(0);
@@ -102,6 +103,7 @@ const App = () => {
 
   return (
     <div className="container">
+        <Header />
         <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
         <Routes>
           <Route path="database" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
