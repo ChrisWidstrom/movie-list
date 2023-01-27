@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 
-const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Function }) => {
+const SearchMovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Function }) => {
     
   const button = useRef<HTMLButtonElement>(null);
 
@@ -117,4 +117,4 @@ const MovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Func
   );
 };
 
-export default MovieDetails;
+export default SearchMovieDetails;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Movie from "../ts/types/types";
 import trashbinImage from "../images/trash.png";
 
-const MyList = ({
+const MyListView = ({
   myList,
   removeMovieFromMyList,
 }: {
@@ -108,4 +108,4 @@ const MyList = ({
   );
 };
 
-export default MyList;
+export default MyListView;

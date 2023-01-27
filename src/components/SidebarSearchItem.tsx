@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieItem = ({title, setMovieId, id}:{title: String; setMovieId: Function; id: Number}) => {
+const SidebarSearchItem = ({title, setMovieId, id}:{title: String; setMovieId: Function; id: Number}) => {
 
   /**
    * updateMovieId
@@ -22,4 +22,4 @@ const MovieItem = ({title, setMovieId, id}:{title: String; setMovieId: Function;
   );
 };
 
-export default MovieItem;
+export default SidebarSearchItem;

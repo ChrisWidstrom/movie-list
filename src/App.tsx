@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import MyList from "./components/MyList";
-import MovieList from "./components/MovieList";
-import MovieDetails from "./components/MovieDetails";
+import MyListView from "./components/MyListView";
+import SearchMovieDetails from "./components/SearchMovieDetails";
 import Header from "./components/Header"
 import Movie from "./ts/types/types";
 import axios from "axios";
 import "./App.css";
+import Sidebar from "./components/Sidebar";
 
 
 const App = () => {
@@ -69,7 +69,7 @@ const App = () => {
    */
 
   const updateMovieId = (id: Number) => {
-    navigate('/database');
+    navigate('/search');
     setMovieId(id);
   }
 
@@ -104,10 +104,10 @@ const App = () => {
   return (
     <div className="container">
         <Header />
-        <MovieList movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
+        <Sidebar movieList={movies} setQuery={updateQuery} setMovieId={updateMovieId}/>
         <Routes>
-          <Route path="database" element={<MovieDetails movieId={movieId} addToList={addToMyList}/>} />
-          <Route path="/" element={<MyList myList={myList} removeMovieFromMyList={removeMovieFromMyList}/>} />
+          <Route path="search" element={<SearchMovieDetails movieId={movieId} addToList={addToMyList}/>} />
+          <Route path="/" element={<MyListView myList={myList} removeMovieFromMyList={removeMovieFromMyList}/>} />
         </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const SearchBar = ({ setQuery } : { setQuery: Function}) => {
+const SidebarSearchField = ({ setQuery } : { setQuery: Function}) => {
 
   const searchField = useRef(document.createElement("input"));
 
@@ -35,4 +35,4 @@ const SearchBar = ({ setQuery } : { setQuery: Function}) => {
   );
 };
 
-export default SearchBar;
+export default SidebarSearchField;

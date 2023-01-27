@@ -1,9 +1,9 @@
 import React from "react";
 import Movie from "../ts/types/types";
-import SearchBar from "./SearchBar";
-import MovieItem from "./MovieItem";
+import SidebarSearchField from "./SidebarSearchField";
+import SidebarSearchItem from "./SidebarSearchItem";
 
-const MovieList = ({
+const Sidebar = ({
   movieList,
   setQuery,
   setMovieId,
@@ -14,10 +14,10 @@ const MovieList = ({
 }) => {
   return (
     <div className="searchPane">
-      <SearchBar setQuery={setQuery} />
+      <SidebarSearchField setQuery={setQuery} />
       {movieList.map((movie: Movie) => {
         return (
-          <MovieItem
+          <SidebarSearchItem
             title={movie.title}
             id={movie.id}
             setMovieId={setMovieId}
@@ -28,4 +28,4 @@ const MovieList = ({
   );
 };
 
-export default MovieList;
+export default Sidebar;
