@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Movie from "../ts/types/types";
-import trashbinImage from "../images/trash.png";
+import MyListViewMovieDetails from "./MyListViewMovieDetails";
+import MyListViewMyList from "./MyListViewMyList";
+
 
 const MyListView = ({
   myList,
@@ -36,72 +38,19 @@ const MyListView = ({
    *
    */
 
-  const removeMovieFromList = (movieId: Number) => {
-    removeMovieFromMyList(movieId);
-  };
+  // const updateMovie = (movie: Movie) => {
+  //   setMovie(movie);
+  // }
 
   return (
     <div className="main">
       <div className="movieDetails">
         <div className="movieDetailsColumn1">
-          
-          <img
-            src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : './img/poster-na.jpg'}
-            alt="movie poster"
-            className="poster"
-          />
-
-          <h1 className="movieHeading">{movie.title}</h1>
-          <div className="movieInfo">
-            <span>
-              {`${movie.release_date.slice(0, 4)} • ${movie.runtime} min`}
-            </span>
-          </div>
-
-          <div className="genres">
-            {movie.genres.map((genre: any) => {
-              return (
-                <span className="genre" key={Math.random() * 1000}>
-                  {genre.name}
-                </span>
-              );
-            })}
-          </div>
-
-          <div className="myListContainer">
-            <p>{movie.overview}</p>
-          </div>
+          <MyListViewMovieDetails movie={movie}/>
         </div>
 
         <div className="movieDetailsColumn2">
-          <h1 className="myListHeader">My list</h1>
-          <ul className="myList">
-            {myList.map((movie) => {
-              return (
-                <div className="myListRow">
-                  <li
-                    onClick={() => {
-                      setMovie(movie);
-                    }}
-                    className="myListItem"
-                  >
-                    {movie.title}
-                  </li>
-                  <button
-                    type="button"
-                    className="removeFromMyListButton"
-                    onClick={() => removeMovieFromList(movie.id)}
-                  >
-                    <img
-                      src={trashbinImage}
-                      alt="buttonpng"
-                      className="trashImage"
-                    />
-                  </button>
-                </div>
-              );
-            })}
-          </ul>
+          <MyListViewMyList myList={myList} setMovie={setMovie} removeMovieFromList={removeMovieFromMyList}/>
         </div>
       </div>
     </div>

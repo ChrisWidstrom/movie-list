@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import SearchMovieDetailsPoster from "./SearchMovieDetailsPoster";
+import SearchMovieDetailsMovieInformation from "./SearchMovieDetailsMovieInformation";
 
 const SearchMovieDetails = ({ movieId, addToList }: { movieId: Number; addToList: Function }) => {
     
-  const button = useRef<HTMLButtonElement>(null);
-
   // The movie state is initialized with a movie object to provide content to the view. 
   // This will be solved more elegantly in the future.
 
   const [movie, setMovie] = useState({
+    id: 1,
     title: "The Karate Kid",
     poster_path: "/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg",
     release_date: "1984-06-22",
@@ -42,8 +42,6 @@ const SearchMovieDetails = ({ movieId, addToList }: { movieId: Number; addToList
         setMovie(response.data);
       })
       .catch((err) => `Error description: ${err}`);
-
-    updateButtonText("Add to list");
   }, [setMovie, movieId]);
 
   /**
@@ -55,11 +53,7 @@ const SearchMovieDetails = ({ movieId, addToList }: { movieId: Number; addToList
    *
    */
 
-  const updateButtonText = (text: String) => {
-    if (button.current !== null) {
-      button.current.innerText = `${text}`;
-    }
-  };
+
 
   /**
    * addToMyList
@@ -71,47 +65,14 @@ const SearchMovieDetails = ({ movieId, addToList }: { movieId: Number; addToList
    *
    */
 
-  const addToMyList = () => {
-    addToList(movie);
-    updateButtonText("Added to list");
-  };
-
   return (
     <div className="movieDetails-search">
       <div className="movieDetailsColumn1-search">
-        <img
-          src={ movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "./img/poster-na.jpg"}
-          alt="movie poster"
-          className="poster"
-        />
+        <SearchMovieDetailsPoster path={movie.poster_path} />
       </div>
 
       <div className="movieDetailsColumn2-search">
-        <h1 className="movieHeading">{movie.title}</h1>
-        <div className="movieInfo">
-          <span>
-            {movie.release_date.slice(0, 4)} {" • "} {movie.runtime} min
-          </span>
-        </div>
-
-        <div className="genres">
-          {movie.genres.map((genre: any) => {
-            return (
-              <span className="genre" key={Math.random() * 1000}>
-                {genre.name}
-              </span>
-            );
-          })}
-        </div>
-
-        <p>{movie.overview}</p>
-
-        <button
-          type="button"
-          ref={button}
-          className="addButton"
-          onClick={addToMyList}
-        ></button>
+        <SearchMovieDetailsMovieInformation movie={movie} addToList={addToList}/>
       </div>
     </div>
   );
